@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <title>My App</title>
+  <head>
+    <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+    <script src="angular.min.js"></script>
+    <script type="text/javascript">
+      angular.element(document).ready(function ()  {
+        $("#myVideo").bind('ended', function(){
+          nextVideo();   
+        }); 
+      });
+
+      function nextVideo() {
+          window.location.assign("live-vid.html");
+      };
+    </script>
+  </head>
+  <body>
+    <div id="content">
+        <img src="play-button.jpg" id="playbutton">
+        <video id='myVideo'>
+        <src src=""/>
+        </video>
+    </div>
+  </body>
+<script>
+
+   playbutton = document.getElementById("playbutton");
+   playbutton.onclick = function() {
+       videoPlayer = document.getElementById("myVideo");
+       videoPlayer.src = '1.mp4';
+       videoPlayer.removeAttribute("controls");
+       videoPlayer.play();
+       if (videoPlayer.requestFullscreen) {
+           videoPlayer.requestFullscreen();
+       }
+       else if(videoPlayer.mozRequestFullScreen) {
+           videoPlayer.mozReqeustFullScreen();
+       }
+       else if(videoPlayer.webkitRequestFullscreen) {
+           videoPlayer.webkitRequestFullscreen();
+       }
+    }
+</script>
+
+</html>
